@@ -1,0 +1,109 @@
+<!-- {{questions |json}} -->
+<div class="bootstrap-wrapper" *ngIf="!isSubmitted">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+
+            <div class="col-md-8" *ngIf="questions.length>0">
+                <h1 class="mt20">
+                    {{questions[0].quiz.title}}
+                </h1>
+                <mat-card class="mt10" *ngFor="let q of questions; let i = index">
+
+                    <mat-card-content>
+                        <p>
+                            <b>Q{{i+1}}) </b>
+                            <span [innerHTML]="q.content">
+                            </span>
+                        </p>
+                        <mat-divider></mat-divider>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input [(ngModel)]="q.chosenOption" id="{{i*4}}" type="radio" value="Option 1"
+                                    name="{{i}}">
+                                <label for="{{i*4}}" class="ml10">{{q.options[0]}} </label>
+
+                            </div>
+                            <div class="col-md-6">
+                                <input [(ngModel)]="q.chosenOption" id="{{i*4+1}}" type="radio" value="Option 2"
+                                    name="{{i}}">
+                                <label for="{{i*4+1}}" class="ml10">{{q.options[1]}} </label>
+                            </div>
+                            <div class="col-md-6">
+                                <input [(ngModel)]="q.chosenOption" id="{{i*4+2}}" type="radio" value="Option 3"
+                                    name="{{i}}">
+                                <label for="{{i*4+2}}" class="ml10">{{q.options[2]}} </label>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="{{i*4+3}}" type="radio" [(ngModel)]="q.chosenOption" value="Option 4"
+                                    name="{{i}}">
+                                <label for="{{i*4+3}}" class="ml10">{{q.options[3]}} </label>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                <div class="container text-center mt20">
+                    <button mat-raised-button color="primary" (click)="submitQuiz()">
+                        Submit Quiz
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-md-8" *ngIf="questions.length==0">
+                <mat-card class="mt20">
+                    <mat-card-content>
+                        <h1>There are No Qustions in this Quiz</h1>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-3">
+                <mat-card style="margin-top: 80px;">
+
+                    <mat-card-content class="text-center">
+                        <h5>Progress</h5>
+                        Time Left: {{getTimeFormatted()}}
+                        <mat-spinner mode="determinate" style="margin:auto"
+                            [value]="(timer/(this.questions.length*2*60))*100">
+                        </mat-spinner>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isSubmitted" class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <mat-card class="mt20">
+                <mat-card-header>
+                    <mat-card-title style="margin:auto">
+                        Quiz Result
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="text-center">
+                    <h1>Marks Obtained: {{totalMarks}} </h1>
+                    <h1>Correct Answers: {{correctAnswers}} </h1>
+                    <h1>Questions Attempted: {{attempted}} </h1>
+                </mat-card-content>
+
+                <mat-card-actions style="margin-left: 30%">
+
+                    <button mat-raised-button color="primary">
+                        Print Report
+                    </button>
+
+                    <button mat-raised-button color="accent" class="ml10" routerLink="/user-dashboard">
+                        Home
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+    </div>
+</div>

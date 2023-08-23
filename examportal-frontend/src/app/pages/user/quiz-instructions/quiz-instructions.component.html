@@ -1,0 +1,58 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="mt20 mb20">
+                    <mat-card-header>
+                        <mat-card-title>
+                            Read the instructions Carefully
+                        </mat-card-title>
+
+                    </mat-card-header>
+
+                    <mat-card-content class="mt20" *ngIf="quiz">
+                        <h1>{{quiz.title}} </h1>
+                        <p>{{quiz.description}} </p>
+
+                        <mat-divider></mat-divider>
+
+                        <h1>Important Instructions</h1>
+
+                        <ul>
+                            <li>There are totally <b>{{quiz.numberOfQuestions}}</b> questions</li>
+                            <li>You have to submit quiz within time <b>{{quiz.numberOfQuestions*2}} mins </b> </li>
+                            <li>Quiz can be attempted any number of times</li>
+                            <li>Each question carries <b>{{marksPerQuestion}}</b> marks </li>
+                            <li>No Negative marks for wrong answers</li>
+
+                        </ul>
+
+                        <h1>Attempting Quiz</h1>
+
+                        <ul>
+                            <li>
+                                The quiz timer cannot be paused once started
+                            </li>
+                            <li>
+                                The quiz can't be resumed if it is interrupted
+                            </li>
+                            <li>
+                                Scroll Down to move to next qustion
+                            </li>
+                            <li>
+                                Report of the quiz will be produced once it is done
+                            </li>
+                        </ul>
+
+
+                    </mat-card-content>
+
+                    <mat-card-action class="text-center mb20">
+                        <button mat-raised-button color="primary" (click)="startQuiz()" >Start
+                            Quiz</button>
+                    </mat-card-action>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

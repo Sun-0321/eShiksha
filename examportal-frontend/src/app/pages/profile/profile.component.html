@@ -1,0 +1,60 @@
+<mat-card *ngIf="user">
+    <div mat-subheader class="container">
+        <h1>Your Profile Details</h1>
+    </div>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="container">
+
+                <div class="container text-center">
+                    <img class="profile-img"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/768px-Windows_10_Default_Profile_Picture.svg.png?20221210150350"
+                        alt="Profile Pic">
+                    <h1 class="mt20">{{user.firstName + user.lastName}}</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table text-center">
+                            <!-- <thead>
+                                <tr>
+                                    <th scope="col">Key</th>
+                                    <th scope="col">Value</th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <tr>
+                                    <td>Username</td>
+                                    <td>{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td>User ID</td>
+                                    <td>{{user.userId}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>{{user.phone}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Role</td>
+                                    <td>{{user.authorities[0].authority}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    <td>{{user.enabled}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <div class="container text-center">
+            <button mat-button>UPDATE</button>
+            <button mat-button>SHARE</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
